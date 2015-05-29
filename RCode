@@ -3,22 +3,7 @@
 # (3) allele a (= 1 - s) for asexual reproduction; and (4) allele n (= 1 - c) for non-costly reproduction. 
 
 # Copy-paste the function's code in R and modify the parameters to explore the system dynamics
-
-# The output will be a matrix of 9 variables in columns and ass many rows as calculated generations. 
-
-# Recomended parameters and plotting: 
-
-out <- CarranzaandPolo(m = 3.3, R = 1.6, b = 0.5, k = 0.5, alpha = 0.5, a0 = 0.99, n0 = 0.99, gen = 5000)
-
-#Plot the dynamic of allele requency asexual reproduction vs. costly sexual reproduction (a vs. c):
-
-plot(out$a, ylim = c(0,1), type = "l", col = "red")
-lines(out$c, col = "blue")
-
-#Plot dynamic's attractor
-
-plot(c ~ a, out, type = "l")
-
+# Find how to use the function below the script
 
 
 CarranzaandPolo <- function(data, m, R, b, k, alpha, a0, n0, gen) {
@@ -262,3 +247,23 @@ CarranzaandPolo <- function(data, m, R, b, k, alpha, a0, n0, gen) {
   names(out) <- c("1 - pi", "theta", "1 + phi", "tao", "denom", "a", "s", "n", "c")
   return(out)
 }
+
+
+
+# Recomended parameters and plotting: 
+
+out <- CarranzaandPolo(m = 3.3, R = 1.6, b = 0.5, k = 0.5, alpha = 0.5, a0 = 0.99, n0 = 0.99, gen = 5000)
+
+# The output is a matrix containing as many rows as generations (gen) and 9 columns. Each colum represent the dynamics of 
+# necesary variables to estimate allele frequencies. The last 4 columns are the allele frequencies of alleles a, s, n and c respectively.
+
+#Plot the dynamic of allele requency asexual reproduction vs. costly sexual reproduction (a vs. c):
+
+plot(out$a, ylim = c(0,1), type = "l", col = "red")
+lines(out$c, col = "blue")
+
+#Plot dynamic's attractor
+
+plot(c ~ a, out, type = "l")
+
+

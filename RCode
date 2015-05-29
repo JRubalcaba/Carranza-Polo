@@ -1,4 +1,25 @@
-##Parámetros
+## The following function generates the dynamics of a rock-paper-scissors model that describe allele frequency dynamics of four loci:
+# (1) allele s determining sexual reproduction; (2) allele c determining costly sexual reproduction (e.g., polygynous breeding systems);
+# (3) allele a (= 1 - s) for asexual reproduction; and (4) allele n (= 1 - c) for non-costly reproduction. 
+
+# Copy-paste the function's code in R and modify the parameters to explore the system dynamics
+
+# The output will be a matrix of 9 variables in columns and ass many rows as calculated generations. 
+
+# Recomended parameters and plotting: 
+
+out <- CarranzaandPolo(m = 3.3, R = 1.6, b = 0.5, k = 0.5, alpha = 0.5, a0 = 0.99, n0 = 0.99, gen = 5000)
+
+#Plot the dynamic of allele requency asexual reproduction vs. costly sexual reproduction (a vs. c):
+
+plot(out$a, ylim = c(0,1), type = "l", col = "red")
+lines(out$c, col = "blue")
+
+#Plot dynamic's attractor
+
+plot(c ~ a, out, type = "l")
+
+
 
 CarranzaandPolo <- function(data, m, R, b, k, alpha, a0, n0, gen) {
   
@@ -10,14 +31,14 @@ CarranzaandPolo <- function(data, m, R, b, k, alpha, a0, n0, gen) {
   c0 <- 1 - n0
   s0 <- 1 - a0
   
-  ##Vectores 1
+  ##Vectors 1
   
   a <- numeric(gen)
   s <- numeric(gen)
   c <- numeric(gen)
   n <- numeric(gen)
   
-  ##Vectores 2
+  ##Vectors 2
   
   P1 <- numeric(gen)
   P2 <- numeric(gen) 
@@ -29,7 +50,7 @@ CarranzaandPolo <- function(data, m, R, b, k, alpha, a0, n0, gen) {
   P8 <- numeric(gen) 
   P9 <- numeric(gen) 
   
-  ##Vectores 3
+  ##Vectors 3
   
   denom <- numeric(gen)
   pi <- numeric(gen)
@@ -37,7 +58,7 @@ CarranzaandPolo <- function(data, m, R, b, k, alpha, a0, n0, gen) {
   phi <- numeric(gen)
   theta <- numeric(gen)
   
-  ##Vectores 4
+  ##Vectors 4
   
   x4x4 <- numeric(gen)
   x4x5 <- numeric(gen)
@@ -76,7 +97,7 @@ CarranzaandPolo <- function(data, m, R, b, k, alpha, a0, n0, gen) {
   x9x8 <- numeric(gen)
   x9x9 <- numeric(gen)
   
-  ##Vectores 5
+  ##Vectors 5
   
   sum1 <- numeric(gen)
   sum2 <- numeric(gen)
@@ -89,8 +110,7 @@ CarranzaandPolo <- function(data, m, R, b, k, alpha, a0, n0, gen) {
   sum9 <- numeric(gen)
   sumT <- numeric(gen)
   
-  ##Carga de valores iniciales
-  
+  ##Dynamics
   
   for(i in 1 : gen) {
     if (i > 1) {
@@ -235,6 +255,9 @@ CarranzaandPolo <- function(data, m, R, b, k, alpha, a0, n0, gen) {
       sumT[i] <- sum(sum1[i ], sum2[i ], sum3[i ], sum4[i ], sum5[i ], sum6[i ], sum7[i ], sum8[i ], sum9[i ])
     }
   }
+  
+  #Output
+  
   out <- as.data.frame(cbind(pi, theta, phi, tao, denom, a, s, n, c))
   names(out) <- c("1 - pi", "theta", "1 + phi", "tao", "denom", "a", "s", "n", "c")
   return(out)

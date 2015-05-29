@@ -1,0 +1,241 @@
+##Parámetros
+
+CarranzaandPolo <- function(data, m, R, b, k, alpha, a0, n0, gen) {
+  
+  out <- list(data.frame())
+  
+  for (i in 1 : length(R)) {
+    
+  
+  c0 <- 1 - n0
+  s0 <- 1 - a0
+  
+  ##Vectores 1
+  
+  a <- numeric(gen)
+  s <- numeric(gen)
+  c <- numeric(gen)
+  n <- numeric(gen)
+  
+  ##Vectores 2
+  
+  P1 <- numeric(gen)
+  P2 <- numeric(gen) 
+  P3 <- numeric(gen) 
+  P4 <- numeric(gen) 
+  P5 <- numeric(gen) 
+  P6 <- numeric(gen) 
+  P7 <- numeric(gen) 
+  P8 <- numeric(gen) 
+  P9 <- numeric(gen) 
+  
+  ##Vectores 3
+  
+  denom <- numeric(gen)
+  pi <- numeric(gen)
+  tao <- numeric(gen)
+  phi <- numeric(gen)
+  theta <- numeric(gen)
+  
+  ##Vectores 4
+  
+  x4x4 <- numeric(gen)
+  x4x5 <- numeric(gen)
+  x4x6 <- numeric(gen)
+  x4x7 <- numeric(gen)
+  x4x8 <- numeric(gen)
+  x4x9 <- numeric(gen)
+  x5x4 <- numeric(gen)
+  x5x5 <- numeric(gen)
+  x5x6 <- numeric(gen)
+  x5x7 <- numeric(gen)
+  x5x8 <- numeric(gen)
+  x5x9 <- numeric(gen)
+  x6x4 <- numeric(gen)
+  x6x5 <- numeric(gen)
+  x6x6 <- numeric(gen)
+  x6x7 <- numeric(gen)
+  x6x8 <- numeric(gen)
+  x6x9 <- numeric(gen)
+  x7x4 <- numeric(gen)
+  x7x5 <- numeric(gen)
+  x7x6 <- numeric(gen)
+  x7x7 <- numeric(gen)
+  x7x8 <- numeric(gen)
+  x7x9 <- numeric(gen)
+  x8x4 <- numeric(gen)
+  x8x5 <- numeric(gen)
+  x8x6 <- numeric(gen)
+  x8x7 <- numeric(gen)
+  x8x8 <- numeric(gen)
+  x8x9 <- numeric(gen)
+  x9x4 <- numeric(gen)
+  x9x5 <- numeric(gen)
+  x9x6 <- numeric(gen)
+  x9x7 <- numeric(gen)
+  x9x8 <- numeric(gen)
+  x9x9 <- numeric(gen)
+  
+  ##Vectores 5
+  
+  sum1 <- numeric(gen)
+  sum2 <- numeric(gen)
+  sum3 <- numeric(gen)
+  sum4 <- numeric(gen)
+  sum5 <- numeric(gen)
+  sum6 <- numeric(gen)
+  sum7 <- numeric(gen)
+  sum8 <- numeric(gen)
+  sum9 <- numeric(gen)
+  sumT <- numeric(gen)
+  
+  ##Carga de valores iniciales
+  
+  
+  for(i in 1 : gen) {
+    if (i > 1) {
+      P1[i] <- sum1[i - 1] / sumT[i - 1]
+      P2[i] <- sum2[i - 1] / sumT[i - 1]
+      P3[i] <- sum3[i - 1] / sumT[i - 1]
+      P4[i] <- sum4[i - 1] / sumT[i - 1]
+      P5[i] <- sum5[i - 1] / sumT[i - 1]
+      P6[i] <- sum6[i - 1] / sumT[i - 1]
+      P7[i] <- sum7[i - 1] / sumT[i - 1]
+      P8[i] <- sum8[i - 1] / sumT[i - 1]
+      P9[i] <- sum9[i - 1] / sumT[i - 1]
+      
+      denom[i] <- 1 + (m - 1) * ((alpha * P6[i]) + P9[i] + k * ((alpha * P5[i]) + P8[i]))    
+      pi[i] <- 1 / denom[i]
+      tao[i] <- (alpha * (P4[i] + P5[i] + P6[i])) + P7[i] + P8[i] + P9[i]
+      phi[i] <- (1 + (tao[i ] * (m - 1)))  / denom[i ]    
+      theta[i] <- (1 + tao[i ] * (k * (m - 1))) / denom[i ]
+      
+      a[i] <- sum(P1[i ], P2[i ], P3[i ]) + 0.5 * sum(P4[i ], P5[i ], P6[i ])
+      c[i] <- P3[i ] + P6[i ] + P9[i ] + 0.5 * (P2[i ] + P5[i ] + P8[i ])
+      n[i] <- 1 - c[i ]
+      s[i] <- 1 - a[i ]
+      
+      x4x4[i]  <- alpha*alpha*P4[i]*P4[i]*R*pi[i]/tao[i]
+      x4x5[i]  <- 0.5*alpha*alpha*pi[i]*P4[i]*P5[i]*R*(2-(k*(1-b)))/tao[i]
+      x4x6[i]  <- 0.5*alpha*alpha*pi[i]*P4[i]*P6[i]*R*(1+b)/tao[i]
+      x4x7[i]	<- alpha*pi[i]*P4[i]*P7[i]*R/tao[i]
+      x4x8[i]	<- 0.5*alpha*pi[i]*P4[i]*P8[i]*R*(2-(k*(1-b)))/tao[i]
+      x4x9[i]	<- 0.5*alpha*pi[i]*P4[i]*P9[i]*R*(1+b)/tao[i]
+      x5x4[i]	<- 0.5*alpha*alpha*theta[i]*P4[i]*P5[i]*R*(2-k)/tao[i]
+      x5x5[i]	<- 0.5*alpha*alpha*theta[i]*P5[i]*P5[i]*R*(2-k-(k*(1-k)*(1-b)))/tao[i]
+      x5x6[i]	<- 0.5*alpha*alpha*theta[i]*P5[i]*P6[i]*R*(1+(b*(1-k)))/tao[i]
+      x5x7[i]	<- 0.5*alpha*theta[i]*P5[i]*P7[i]*R*(2-k)/tao[i]
+      x5x8[i]	<- 0.5*alpha*theta[i]*P5[i]*P8[i]*R*(2-k-(k*(1-k)*(1-b)))/tao[i]
+      x5x9[i]	<- 0.5*alpha*theta[i]*P5[i]*P9[i]*R*(1+(b*(1-k)))/tao[i]
+      x6x4[i]	<- 0.5*alpha*alpha*P4[i]*P6[i]*R*phi[i]/tao[i]
+      x6x5[i]	<- 0.5*alpha*alpha*P5[i]*P6[i]*phi[i]*R/tao[i]
+      x6x6[i]	<- 0.5*alpha*alpha*phi[i]*P6[i]*P6[i]*R/tao[i]
+      x6x7[i]	<- 0.5*alpha*phi[i]*R*P6[i]*P7[i]/tao[i]
+      x6x8[i]	<- 0.5*alpha*phi[i]*R*P6[i]*P8[i]/tao[i]
+      x6x9[i]	<- 0.5*alpha*R*phi[i]*P6[i]*P9[i]/tao[i]
+      x7x4[i]	<- alpha*pi[i]*R*P4[i]*P7[i]/tao[i]
+      x7x5[i]	<- 0.5*alpha*R*pi[i]*P5[i]*P7[i]*(2-(k*(1-b)))/tao[i]
+      x7x6[i]	<- 0.5*alpha*pi[i]*R*P6[i]*P7[i]*(1+b)/tao[i]
+      x7x7[i]	<- R*pi[i]*P7[i]*P7[i]/tao[i]
+      x7x8[i]	<- 0.5*R*pi[i]*P7[i]*P8[i]*(2-(k*(1-b)))/tao[i]
+      x7x9[i]	<- 0.5*R*pi[i]*P7[i]*P9[i]*(1+b)/tao[i]
+      x8x4[i]	<- 0.5*alpha*theta[i]*R*P4[i]*P8[i]*(2-k)/tao[i]
+      x8x5[i]	<- 0.5*alpha*R*theta[i]*P5[i]*P8[i]*(2-k-(k*(1-k)*(1-b)))/tao[i]
+      x8x6[i]	<- 0.5*alpha*theta[i]*R*P6[i]*P8[i]*(1+(b*(1-k)))/tao[i]
+      x8x7[i]	<- 0.5*theta[i]*R*P7[i]*P8[i]*(2-k)/tao[i]
+      x8x8[i]	<- 0.5*theta[i]*R*P8[i]*P8[i]*(2-k-(k*(1-k)*(1-b)))/tao[i]
+      x8x9[i]	<- 0.5*theta[i]*R*P8[i]*P9[i]*(1+(b*(1-k)))/tao[i]
+      x9x4[i]	<- 0.5*alpha*R*phi[i]*P4[i]*P9[i]/tao[i]
+      x9x5[i]	<- 0.5*alpha*R*phi[i]*P5[i]*P9[i]/tao[i]
+      x9x6[i]	<- 0.5*alpha*R*phi[i]*P6[i]*P9[i]/tao[i]
+      x9x7[i]	<- 0.5*R*phi[i]*P7[i]*P9[i]/tao[i]
+      x9x8[i]	<- 0.5*R*phi[i]*P8[i]*P9[i]/tao[i]
+      x9x9[i]	<- 0.5*R*phi[i]*P9[i]*P9[i]/tao[i]
+      
+      sum1[i] <-  P1[i] + 0.25 * x4x4[i] + 0.175 * x4x5[i] + 0.175 * x5x4[i] + 0.0875 * x5x5[i]
+      sum2[i] <-	P2[i] + 0.175 * x4x5[i] + 0.25 * x4x6[i] + 0.175 * (x5x4[i] + x5x5[i] + x5x6[i]) + 0.25 * x6x4[i] + 0.175 * x6x5[i]
+      sum3[i] <-	P3[i] + 0.0875 * x5x5[i] + 0.175 * x5x6[i] + 0.175 * x6x5[i] + 0.25 * x6x6[i]
+      sum4[i] <-	((1-alpha)*P4[i])+0.5*x4x4[i]+0.25*x4x5[i]+0.5*x4x7[i]+0.25*x4x8[i]+0.25*x5x4[i]+0.175*x5x5[i]+0.25*x5x7[i]+0.175*x5x8[i]+0.5*x7x4[i]+0.25*x7x5[i]+0.25*x8x4[i]+0.175*x8x5[i]
+      sum5[i] <-	((1-alpha)*P5[i])+0.25*x4x5[i]+0.5*x4x6[i]+0.25*x4x8[i]+0.5*x4x9[i]+0.25*(x5x4[i]+x5x5[i]+x5x6[i]+x5x7[i]+x5x8[i]+x5x9[i])+0.5*x6x4[i]+0.25*x6x5[i]+0.5*x6x7[i]+0.25*x6x8[i]+0.25*x7x5[i]+0.5*x7x6[i]+0.25*(x8x4[i]+x8x5[i]+x8x6[i])+0.5*x9x4[i]+0.25*x9x5[i]  
+      sum6[i] <-	((1-alpha)*P6[i])+0.175*x5x5[i]+0.25*x5x6[i]+0.175*x5x8[i]+0.25*x5x9[i]+0.25*x6x5[i]+0.5*x6x6[i]+0.25*x6x8[i]+0.5*x6x9[i]+0.175*x8x5[i]+0.25*x8x6[i]+0.25*x9x5[i]+0.5*x9x6[i]
+      sum7[i] <-	0.25*x4x4[i]+0.175*x4x5[i]+0.5*x4x7[i]+0.25*x4x8[i]+0.175*x5x4[i]+0.0875*x5x5[i]+0.25*x5x7[i]+0.175*x5x8[i]+0.5*x7x4[i]+0.25*x7x5[i]+x7x7[i]+0.5*x7x8[i]+0.25*x8x4[i]+0.175*x8x5[i]+0.5*x8x7[i]+0.25*x8x8[i]
+      sum8[i] <-	0.175*x4x5[i]+0.25*(x4x6[i]+x4x8[i])+0.5*x4x9[i]+0.175*(x5x4[i]+x5x5[i]+x5x6[i])+0.25*(x5x7[i]+x5x8[i]+x5x9[i])+0.25*x6x4[i]+0.175*x6x5[i]+0.5*x6x7[i]+0.25*x6x8[i]+0.25*x7x5[i]+0.5*(x7x6[i]+x7x8[i])+x7x9[i]+0.25*(x8x4[i]+x8x5[i]+x8x6[i])+0.5*(x8x7[i]+x8x8[i]+x8x9[i])+0.5*x9x4[i]+0.25*x9x5[i]+x9x7[i]+0.5*x9x8[i]
+      sum9[i] <-	0.0875*x5x5[i]+0.175*(x5x6[i]+x5x8[i])+0.25*x5x9[i]+0.175*x6x5[i]+0.25*(x6x6[i]+x6x8[i])+0.5*x6x9[i]+0.175*x8x5[i]+0.25*(x8x6[i]+x8x8[i])+0.5*x8x9[i]+0.25*x9x5[i]+0.5*(x9x6[i]+x9x8[i])+x9x9[i]
+      sumT[i] <- sum(sum1[i ], sum2[i ], sum3[i ], sum4[i ], sum5[i ], sum6[i ], sum7[i ], sum8[i ], sum9[i ])
+      
+    }else{
+      
+      a[1] <- a0
+      s[1] <- s0
+      c[1] <- c0
+      n[1] <- n0
+      
+      P1[i] <- a[i]^2 * n[i]^2
+      P2[i] <- 2 * a[i]^2 * n[i] * c[i]
+      P3[i] <- a[i]^2 * c[i]^2
+      P4[i] <- 2 * a[i] * s[i] * n[i]^2
+      P5[i] <- 4 * a[i] * s[i] * n[i] * c[i]
+      P6[i] <- 2 * a[i] * s[i] * c[i]^2
+      P7[i] <- s[i]^2 * n[i]^2 
+      P8[i] <- 2 * s[i]^2 * n[i] * c[i]
+      P9[i] <- s[i]^2 * c[i]^2
+      
+      denom[i] <- 1 + (m - 1) * ((alpha * P6[i]) + P9[i] + k * ((alpha[i] * P5[i]) + P8[i]))
+      pi[i] <- 1 / denom[i]
+      tao[i] <- (alpha * (P4[i] + P5[i] + P6[i])) + P7[i] + P8[i] + P9[i]
+      phi[i] <- (1 + (tao[i] * (m - 1)))  / denom[i]
+      theta[i] <- (1 + tao[i] * (k * (m-1))) / denom[i]
+      
+      x4x4[i]  <- alpha*alpha*P4[i]*P4[i]*R*pi[i]/tao[i]
+      x4x5[i]  <- 0.5*alpha*alpha*pi[i]*P4[i]*P5[i]*R*(2-(k*(1-b)))/tao[i]
+      x4x6[i]	<- 0.5*alpha*alpha*pi[i]*P4[i]*P6[i]*R*(1+b)/tao[i]
+      x4x7[i]	<- alpha*pi[i]*P4[i]*P7[i]*R/tao[i]
+      x4x8[i]	<- 0.5*alpha*pi[i]*P4[i]*P8[i]*R*(2-(k*(1-b)))/tao[i]
+      x4x9[i]	<- 0.5*alpha*pi[i]*P4[i]*P9[i]*R*(1+b)/tao[i]
+      x5x4[i]	<- 0.5*alpha*alpha*theta[i]*P4[i]*P5[i]*R*(2-k)/tao[i]
+      x5x5[i]	<- 0.5*alpha*alpha*theta[i]*P5[i]*P5[i]*R*(2-k-(k*(1-k)*(1-b)))/tao[i]
+      x5x6[i]	<- 0.5*alpha*alpha*theta[i]*P5[i]*P6[i]*R*(1+(b*(1-k)))/tao[i]
+      x5x7[i]	<- 0.5*alpha*theta[i]*P5[i]*P7[i]*R*(2-k)/tao[i]
+      x5x8[i]	<- 0.5*alpha*theta[i]*P5[i]*P8[i]*R*(2-k-(k*(1-k)*(1-b)))/tao[i]
+      x5x9[i]	<- 0.5*alpha*theta[i]*P5[i]*P9[i]*R*(1+(b*(1-k)))/tao[i]
+      x6x4[i]	<- 0.5*alpha*alpha*P4[i]*P6[i]*R*phi[i]/tao[i]
+      x6x5[i]	<- 0.5*alpha*alpha*P5[i]*P6[i]*phi[i]*R/tao[i]
+      x6x6[i]	<- 0.5*alpha*alpha*phi[i]*P6[i]*P6[i]*R/tao[i]
+      x6x7[i]	<- 0.5*alpha*phi[i]*R*P6[i]*P7[i]/tao[i]
+      x6x8[i]	<- 0.5*alpha*phi[i]*R*P6[i]*P8[i]/tao[i]
+      x6x9[i]	<- 0.5*alpha*R*phi[i]*P6[i]*P9[i]/tao[i]
+      x7x4[i]	<- alpha*pi[i]*R*P4[i]*P7[i]/tao[i]
+      x7x5[i]	<- 0.5*alpha*R*pi[i]*P5[i]*P7[i]*(2-(k*(1-b)))/tao[i]
+      x7x6[i]	<- 0.5*alpha*pi[i]*R*P6[i]*P7[i]*(1+b)/tao[i]
+      x7x7[i]	<- R*pi[i]*P7[i]*P7[i]/tao[i]
+      x7x8[i]	<- 0.5*R*pi[i]*P7[i]*P8[i]*(2-(k*(1-b)))/tao[i]
+      x7x9[i]	<- 0.5*R*pi[i]*P7[i]*P9[i]*(1+b)/tao[i]
+      x8x4[i]	<- 0.5*alpha*theta[i]*R*P4[i]*P8[i]*(2-k)/tao[i]
+      x8x5[i]	<- 0.5*alpha*R*theta[i]*P5[i]*P8[i]*(2-k-(k*(1-k)*(1-b)))/tao[i]
+      x8x6[i]	<- 0.5*alpha*theta[i]*R*P6[i]*P8[i]*(1+(b*(1-k)))/tao[i]
+      x8x7[i]	<- 0.5*theta[i]*R*P7[i]*P8[i]*(2-k)/tao[i]
+      x8x8[i]	<- 0.5*theta[i]*R*P8[i]*P8[i]*(2-k-(k*(1-k)*(1-b)))/tao[i]
+      x8x9[i]	<- 0.5*theta[i]*R*P8[i]*P9[i]*(1+(b*(1-k)))/tao[i]
+      x9x4[i]	<- 0.5*alpha*R*phi[i]*P4[i]*P9[i]/tao[i]
+      x9x5[i]	<- 0.5*alpha*R*phi[i]*P5[i]*P9[i]/tao[i]
+      x9x6[i]	<- 0.5*alpha*R*phi[i]*P6[i]*P9[i]/tao[i]
+      x9x7[i]	<- 0.5*R*phi[i]*P7[i]*P9[i]/tao[i]
+      x9x8[i]	<- 0.5*R*phi[i]*P8[i]*P9[i]/tao[i]
+      x9x9[i]	<- 0.5*R*phi[i]*P9[i]*P9[i]/tao[i]
+      
+      sum1[i] <-  P1[i] + 0.25 * x4x4[i] + 0.175 * x4x5[i] + 0.175 * x5x4[i] + 0.0875 * x5x5[i]
+      sum2[i] <-  P2[i] + 0.175 * x4x5[i] + 0.25 * x4x6[i] + 0.175 * (x5x4[i] + x5x5[i] + x5x6[i]) + 0.25 * x6x4[i] + 0.175 * x6x5[i]
+      sum3[i] <-	P3[i] + 0.0875 * x5x5[i] + 0.175 * x5x6[i] + 0.175 * x6x5[i] + 0.25 * x6x6[i]
+      sum4[i] <-	((1-alpha)*P4[i])+0.5*x4x4[i]+0.25*x4x5[i]+0.5*x4x7[i]+0.25*x4x8[i]+0.25*x5x4[i]+0.175*x5x5[i]+0.25*x5x7[i]+0.175*x5x8[i]+0.5*x7x4[i]+0.25*x7x5[i]+0.25*x8x4[i]+0.175*x8x5[i]
+      sum5[i] <-	((1-alpha)*P5[i])+0.25*x4x5[i]+0.5*x4x6[i]+0.25*x4x8[i]+0.5*x4x9[i]+0.25*(x5x4[i]+x5x5[i]+x5x6[i]+x5x7[i]+x5x8[i]+x5x9[i])+0.5*x6x4[i]+0.25*x6x5[i]+0.5*x6x7[i]+0.25*x6x8[i]+0.25*x7x5[i]+0.5*x7x6[i]+0.25*(x8x4[i]+x8x5[i]+x8x6[i])+0.5*x9x4[i]+0.25*x9x5[i]  
+      sum6[i] <-	((1-alpha)*P6[i])+0.175*x5x5[i]+0.25*x5x6[i]+0.175*x5x8[i]+0.25*x5x9[i]+0.25*x6x5[i]+0.5*x6x6[i]+0.25*x6x8[i]+0.5*x6x9[i]+0.175*x8x5[i]+0.25*x8x6[i]+0.25*x9x5[i]+0.5*x9x6[i]
+      sum7[i] <-	0.25*x4x4[i]+0.175*x4x5[i]+0.5*x4x7[i]+0.25*x4x8[i]+0.175*x5x4[i]+0.0875*x5x5[i]+0.25*x5x7[i]+0.175*x5x8[i]+0.5*x7x4[i]+0.25*x7x5[i]+x7x7[i]+0.5*x7x8[i]+0.25*x8x4[i]+0.175*x8x5[i]+0.5*x8x7[i]+0.25*x8x8[i]
+      sum8[i] <-	0.175*x4x5[i]+0.25*(x4x6[i]+x4x8[i])+0.5*x4x9[i]+0.175*(x5x4[i]+x5x5[i]+x5x6[i])+0.25*(x5x7[i]+x5x8[i]+x5x9[i])+0.25*x6x4[i]+0.175*x6x5[i]+0.5*x6x7[i]+0.25*x6x8[i]+0.25*x7x5[i]+0.5*(x7x6[i]+x7x8[i])+x7x9[i]+0.25*(x8x4[i]+x8x5[i]+x8x6[i])+0.5*(x8x7[i]+x8x8[i]+x8x9[i])+0.5*x9x4[i]+0.25*x9x5[i]+x9x7[i]+0.5*x9x8[i]
+      sum9[i] <-	0.0875*x5x5[i]+0.175*(x5x6[i]+x5x8[i])+0.25*x5x9[i]+0.175*x6x5[i]+0.25*(x6x6[i]+x6x8[i])+0.5*x6x9[i]+0.175*x8x5[i]+0.25*(x8x6[i]+x8x8[i])+0.5*x8x9[i]+0.25*x9x5[i]+0.5*(x9x6[i]+x9x8[i])+x9x9[i]
+      sumT[i] <- sum(sum1[i ], sum2[i ], sum3[i ], sum4[i ], sum5[i ], sum6[i ], sum7[i ], sum8[i ], sum9[i ])
+    }
+  }
+  out <- as.data.frame(cbind(pi, theta, phi, tao, denom, a, s, n, c))
+  names(out) <- c("1 - pi", "theta", "1 + phi", "tao", "denom", "a", "s", "n", "c")
+  return(out)
+}

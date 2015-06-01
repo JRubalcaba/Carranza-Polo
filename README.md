@@ -2,6 +2,9 @@
 
 #### Rock-paper-scissors dynamic model for the evolution of sexual and costly reproduction
 
+##### Carranza and Polo (under review). Sexual reproduction with variable mating systems can resist asexuallity in a rock-paper-scissors dynamics. Royal Society Open Science.
+
+
 #### Summary
 
 While sex can be advantageous for a lineage in the long term, we still lack an 
@@ -29,6 +32,3 @@ situations throughout the parameter space. Our results indicate that sexual line
 variable mating systems can resist the invasion of asexuals and allow for long-term 
 
 effects to accumulate.
-
-
-##### Carranza and Polo (under review). Sexual reproduction with variable mating systems can resist asexuallity in a rock-paper-scissors dynamics. Royal Society Open Science.

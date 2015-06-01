@@ -8,35 +8,26 @@
 #### Summary
 
 While sex can be advantageous for a lineage in the long term, we still lack an 
-
-explanation for its maintenance with the twofold cost per generation. Here we model an 
-
+explanation for its maintenance with the twofold cost per generation. Here we model an
 infinite diploid population where two autosomal loci determine, respectively, the 
-
 reproductive mode, sexual vs. asexual, and the mating system, polygynous (costly sex) 
-
 vs. monogamous (assuming equal contribution of parents to offspring, i. e. non-costly 
-
 sex). We show that alleles for costly sex can spread when non-costly sexual modes 
-
 buffer the interaction between asexual and costly sexual strategies, even without 
-
 twofold benefit of recombination with respect to asexuality. The three interacting 
-
 strategies have intransitive fitness relationships leading to a rock-paper-scissors 
-
 dynamics, so that alleles for costly sex cannot be eliminated by asexuals in most 
-
-situations throughout the parameter space. Our results indicate that sexual lineages with 
-
+situations throughout the parameter space. Our results indicate that sexual lineages with
 variable mating systems can resist the invasion of asexuals and allow for long-term 
-
 effects to accumulate.
 
 
 #### How to use
 
-The function programed in R allows generating the evolutionary dynamics of alleles determining (1) asexual vs. sexual reproduction and, in the second case, (2) non-costly sexual reproduction (i.e., monogamous mating system with bi-parental care) vs. costly sexual reproduction (i.e., polygamous mating system with mono-parental care). 
+The function programed in R allows generating the evolutionary dynamics of alleles determining 
+(1) asexual vs. sexual reproduction and, in the second case, (2) non-costly sexual reproduction 
+(i.e., monogamous mating system with bi-parental care) vs. costly sexual reproduction (i.e., 
+polygamous mating system with mono-parental care). 
 
 
 

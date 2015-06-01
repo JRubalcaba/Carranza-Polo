@@ -1,5 +1,7 @@
-## The following function generates the dynamics of a rock-paper-scissors model that describe allele frequency dynamics of four loci:
-# (1) allele s determining sexual reproduction; (2) allele c determining costly sexual reproduction (e.g., polygynous breeding systems);
+## The following function generates the dynamics of a rock-paper-scissors model that describe allele frequency dynamics of 
+# four loci:
+# (1) allele s determining sexual reproduction; 
+# (2) allele c determining costly sexual reproduction (e.g., polygynous breeding systems);
 # (3) allele a (= 1 - s) for asexual reproduction; and (4) allele n (= 1 - c) for non-costly reproduction. 
 
 # Copy-paste the function's code in R and modify the parameters to explore the system dynamics

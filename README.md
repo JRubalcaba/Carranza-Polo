@@ -32,3 +32,14 @@ situations throughout the parameter space. Our results indicate that sexual line
 variable mating systems can resist the invasion of asexuals and allow for long-term 
 
 effects to accumulate.
+
+
+#### How to use
+
+The function programed in R allows generating the evolutionary dynamics of alleles determining (1) asexual vs. sexual reproduction and, in the second case, (2) non-costly sexual reproduction (i.e., monogamous mating system with bi-parental care) vs. costly sexual reproduction (i.e., polygamous mating system with mono-parental care). 
+
+
+
+
+
+

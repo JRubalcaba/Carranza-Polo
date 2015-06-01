@@ -55,12 +55,19 @@ gen = number of generations
 The function generates a matrix containing as many rows as generations (gen) and 9 columns. Each colum represent the dynamics of the variables necesary to estimate allele frequencies (see below). The last 4 columns are the allele frequencies of alleles a and s (locus S), n and c (locus M) respectively.
 
 1 - pi: Mean number of mates of homozygote nn males in the population 
+
 theta: Mean number of mates of heterozygote cn males in the population
+
 1 + phi: Mean number of mates mate for polygynous cc males in the population 
+
 tao: Proportion on sexual individuals in the population 
+
 a Allele at locus S influencing asexuality 
+
 s Allele at locus S influencing sexuality 
+
 n Allele at locus M influencing non-costly sex 
+
 c Allele at locus M influencing costly sex 
 
 
@@ -69,6 +76,7 @@ output <- CarranzaandPolo(m = 3.3, R = 1.6, b = 0.5, k = 0.5, alpha = 0.5, a0 = 
 ###### (3) Plot the dynamic of allele frequencies in generations:
 
 plot(output$a, ylim = c(0,1), type = "l", col = "red")
+
 lines(output$c, col = "blue")
 
 ###### Plot dynamic's attractor

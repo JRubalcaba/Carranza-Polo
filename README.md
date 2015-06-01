@@ -73,13 +73,11 @@ The function generates a matrix containing as many rows as generations (gen) and
 
 output <- CarranzaandPolo(m = 3.3, R = 1.6, b = 0.5, k = 0.5, alpha = 0.5, a0 = 0.99, n0 = 0.99, gen = 10000)
 
-###### (3) Plot the dynamic of allele frequencies:
+###### (3) Plot the dynamic of allele frequencies and the dynamic attractor using:
 
 plot(output$a, ylim = c(0,1), type = "l", col = "red")
 
 lines(output$c, col = "blue")
-
-###### Plot dynamic's attractor
 
 plot(c ~ a, output, type = "l")
 

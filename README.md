@@ -1,5 +1,5 @@
-# Carranza and Polo
+## Polo, Rubalcaba and Carranza
 
-## Rock-paper-scissors dynamic model for the evolution of the costly sexual reproduction
+### Rock-paper-scissors dynamic model for the evolution of the costly sexual reproduction
 
-## R Code
+### Carranza and Polo (under review). Royal Society Open Science.

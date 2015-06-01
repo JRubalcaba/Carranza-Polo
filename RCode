@@ -246,6 +246,7 @@ CarranzaandPolo <- function(data, m, R, b, k, alpha, a0, n0, gen) {
   out <- as.data.frame(cbind(pi, theta, phi, tao, denom, a, s, n, c))
   names(out) <- c("1 - pi", "theta", "1 + phi", "tao", "denom", "a", "s", "n", "c")
   return(out)
+  }
 }
 
 

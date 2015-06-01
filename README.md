@@ -35,12 +35,19 @@ The function programed in R allows generating the evolutionary dynamics of allel
 ###### Parameter Meaning 
 
 m = Maximum potential number of mates for a polygynous male
+
 R = Benefit of recombination with respect to asexuality 
+
 b = Proportion of male parental contribution accepted by nn female
+
 k = Dominance effect of allele c in locus M 
+
 alpha = Probability of as individual choosing asexual strategy
+
 a0 = Initial frequency of allele a (i.e., asexuality) in locus S
+
 n0 = Initial frequency of allele n (i.e., non-costly sexuality) in locus M
+
 gen = number of generations
 
 ###### Output

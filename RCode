@@ -120,9 +120,9 @@ CarranzaandPolo <- function(data, m, R, b, k, alpha, a0, n0, gen) {
       n[i] <- 1 - c[i ]
       s[i] <- 1 - a[i ]
       
-      x4x4[i]  <- alpha*alpha*P4[i]*P4[i]*R*pi[i]/tao[i]
-      x4x5[i]  <- 0.5*alpha*alpha*pi[i]*P4[i]*P5[i]*R*(2-(k*(1-b)))/tao[i]
-      x4x6[i]  <- 0.5*alpha*alpha*pi[i]*P4[i]*P6[i]*R*(1+b)/tao[i]
+      x4x4[i] <- alpha*alpha*P4[i]*P4[i]*R*pi[i]/tao[i]
+      x4x5[i] <- 0.5*alpha*alpha*pi[i]*P4[i]*P5[i]*R*(2-(k*(1-b)))/tao[i]
+      x4x6[i] <- 0.5*alpha*alpha*pi[i]*P4[i]*P6[i]*R*(1+b)/tao[i]
       x4x7[i]	<- alpha*pi[i]*P4[i]*P7[i]*R/tao[i]
       x4x8[i]	<- 0.5*alpha*pi[i]*P4[i]*P8[i]*R*(2-(k*(1-b)))/tao[i]
       x4x9[i]	<- 0.5*alpha*pi[i]*P4[i]*P9[i]*R*(1+b)/tao[i]
@@ -191,8 +191,8 @@ CarranzaandPolo <- function(data, m, R, b, k, alpha, a0, n0, gen) {
       phi[i] <- (1 + (tao[i] * (m - 1)))  / denom[i]
       theta[i] <- (1 + tao[i] * (k * (m-1))) / denom[i]
       
-      x4x4[i]  <- alpha*alpha*P4[i]*P4[i]*R*pi[i]/tao[i]
-      x4x5[i]  <- 0.5*alpha*alpha*pi[i]*P4[i]*P5[i]*R*(2-(k*(1-b)))/tao[i]
+      x4x4[i] <- alpha*alpha*P4[i]*P4[i]*R*pi[i]/tao[i]
+      x4x5[i] <- 0.5*alpha*alpha*pi[i]*P4[i]*P5[i]*R*(2-(k*(1-b)))/tao[i]
       x4x6[i]	<- 0.5*alpha*alpha*pi[i]*P4[i]*P6[i]*R*(1+b)/tao[i]
       x4x7[i]	<- alpha*pi[i]*P4[i]*P7[i]*R/tao[i]
       x4x8[i]	<- 0.5*alpha*pi[i]*P4[i]*P8[i]*R*(2-(k*(1-b)))/tao[i]

@@ -25,9 +25,7 @@ effects to accumulate.
 #### How to use
 
 The function programed in R allows generating the evolutionary dynamics of alleles determining 
-(1) asexual vs. sexual reproduction and, in the second case, (2) non-costly sexual reproduction 
-(i.e., monogamous mating system with bi-parental care) vs. costly sexual reproduction (i.e., 
-polygamous mating system with mono-parental care). 
+(1) asexual (allele a in locus S) vs. sexual reproduction (allele s in locus S) and, in the second case, (2) non-costly sexual reproduction (allele n in locus M) vs. costly sexual reproduction (alle c in locus M).
 
 
 ###### (1) Copy-paste and execute the function's code in R.
@@ -59,16 +57,16 @@ n Allele at locus M influencing non-costly sex
 c Allele at locus M influencing costly sex 
 
 
- output <- CarranzaandPolo(m = 3.3, R = 1.6, b = 0.5, k = 0.5, alpha = 0.5, a0 = 0.99, n0 = 0.99, gen = 10000)
+output <- CarranzaandPolo(m = 3.3, R = 1.6, b = 0.5, k = 0.5, alpha = 0.5, a0 = 0.99, n0 = 0.99, gen = 10000)
 
 ###### (3) Plot the dynamic of allele frequencies in generations:
 
-plot(out$a, ylim = c(0,1), type = "l", col = "red")
-lines(out$c, col = "blue")
+plot(output$a, ylim = c(0,1), type = "l", col = "red")
+lines(output$c, col = "blue")
 
-#Plot dynamic's attractor
+###### Plot dynamic's attractor
 
-plot(c ~ a, out, type = "l")
+plot(c ~ a, output, type = "l")
 
 
 

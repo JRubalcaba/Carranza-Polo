@@ -1,7 +1,7 @@
-##R programmed functions to the model by Carranza and Polo (under review) on the evolution of sexual reproduction.
+##R programmed functions to the model by Carranza and Polo (2015, R.Soc.open.Sci.) on the evolution of sexual reproduction.
 ####V. Polo, J.G. Rubalcaba and J. Carranza
 
-Carranza and Polo (under review). Sexual reproduction with variable mating systems can resist asexuallity in a rock-paper-scissors dynamics. Royal Society Open Science.
+Carranza and Polo (2015). Sexual reproduction with variable mating systems can resist asexuallity in a rock-paper-scissors dynamics. Royal Society Open Science:http://dx.doi.org/10.1098/rsos.140383.
 
 
 ####Summary from Carranza & Polo (under review)
